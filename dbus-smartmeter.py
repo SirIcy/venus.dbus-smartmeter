@@ -6,8 +6,6 @@
 # and
 #  RalfZim / venus.dbus-fronius-smartmeter
 ##########################################
-
-
  
 # import normal packages
 import platform 

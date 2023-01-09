@@ -24,12 +24,7 @@ In the Python file, you should put the IP of your Fronius device that hosts the 
 
    `chmod 744 /data/dbus-smartmeter/kill_me.sh`
 
-3. Get two files from the [velib_python](https://github.com/victronenergy/velib_python) and install them on your venus:
-
-   - /data/dbus-smartmeter/vedbus.py
-   - /data/dbus-smartmeter/ve_utils.py
-
-4. Add a symlink to the file /data/rc.local:
+3. Add a symlink to the file /data/rc.local:
 
    `ln -s /data/dbus-smartmeter/service /service/dbus-smartmeter`
 

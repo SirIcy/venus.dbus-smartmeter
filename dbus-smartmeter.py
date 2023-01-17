@@ -74,15 +74,26 @@ class DbusSmartmeterService:
       meter_r = requests.get(url=meter_url) # request data from the Tasmota Smartmeter
       meter_data = meter_r.json() # convert JSON data
       #send data to DBus
-      self._dbusservice['/Ac/Power'] = meter_data['StatusSNS']['SML']['Power_cur'] # positive: consumption, negative: feed into grid
-      self._dbusservice['/Ac/Current'] = float(meter_data['StatusSNS']['SML']['Power_cur'] / 230 )
+      self._dbusservice['/Ac/Power'] = meter_data['StatusSNS']['SML']['Power'] #positive: consumption, negative: feed into grid
+      self._dbusservice['/Ac/Current'] = float(meter_data['StatusSNS']['SML']['Power'] / 230 )
+      self._dbusservice['/Ac/Energy/Forward'] = meter_data['StatusSNS']['SML']['Forward']
+      self._dbusservice['/Ac/Energy/Reverse'] = meter_data['StatusSNS']['SML']['Reverse']      
       self._dbusservice['/Ac/L1/Voltage'] = 230
-      self._dbusservice['/Ac/L1/Current'] = float(meter_data['StatusSNS']['SML']['Power_cur'] / 230 )
-      self._dbusservice['/Ac/L1/Power'] = float(meter_data['StatusSNS']['SML']['Power_cur'])
-      self._dbusservice['/Ac/L1/Energy/Forward'] = meter_data['StatusSNS']['SML']['Total_in']
-      self._dbusservice['/Ac/L1/Energy/Reverse'] = meter_data['StatusSNS']['SML']['Total_out'] 
-      self._dbusservice['/Ac/Energy/Forward'] = self._dbusservice['/Ac/L1/Energy/Forward']
-      self._dbusservice['/Ac/Energy/Reverse'] = self._dbusservice['/Ac/L1/Energy/Reverse']
+      self._dbusservice['/Ac/L2/Voltage'] = 230
+      self._dbusservice['/Ac/L3/Voltage'] = 230
+      self._dbusservice['/Ac/L1/Current'] = float(self._dbusservice['/Ac/Current'] / 3 )
+      self._dbusservice['/Ac/L2/Current'] = float(self._dbusservice['/Ac/Current'] / 3 )
+      self._dbusservice['/Ac/L3/Current'] = float(self._dbusservice['/Ac/Current'] / 3 )
+      self._dbusservice['/Ac/L1/Power'] = float(self._dbusservice['/Ac/Power'] / 3 )
+      self._dbusservice['/Ac/L2/Power'] = float(self._dbusservice['/Ac/Power'] / 3 )
+      self._dbusservice['/Ac/L3/Power'] = float(self._dbusservice['/Ac/Power'] / 3 )      
+      self._dbusservice['/Ac/L1/Energy/Forward'] = float(self._dbusservice['/Ac/Energy/Forward'] / 3 )
+      self._dbusservice['/Ac/L2/Energy/Forward'] = float(self._dbusservice['/Ac/Energy/Forward'] / 3 )
+      self._dbusservice['/Ac/L3/Energy/Forward'] = float(self._dbusservice['/Ac/Energy/Forward'] / 3 )      
+      self._dbusservice['/Ac/L1/Energy/Reverse'] = float(self._dbusservice['/Ac/Energy/Reverse'] / 3 )
+      self._dbusservice['/Ac/L2/Energy/Reverse'] = float(self._dbusservice['/Ac/Energy/Reverse'] / 3 )
+      self._dbusservice['/Ac/L3/Energy/Reverse'] = float(self._dbusservice['/Ac/Energy/Reverse'] / 3 )
+      
       #logging
       logging.debug("House Consumption (/Ac/Power): %s" % (self._dbusservice['/Ac/Power']))
       logging.debug("House Forward (/Ac/Energy/Forward): %s" % (self._dbusservice['/Ac/Energy/Forward']))

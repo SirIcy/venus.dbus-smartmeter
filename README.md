@@ -71,7 +71,6 @@ The daemon-tools will restart the scriptwithin a few seconds.
 
 In my installation at home, I am using the following Hardware:
 
-- SolarEdge - PV Grid Tied Inverter (three phases)
 - Tasmota IR SmartMeter
 - Victron MultiPlus-II - Battery Inverter (single phase)
 - Raspberry Pi 3B+ - For running Venus OS

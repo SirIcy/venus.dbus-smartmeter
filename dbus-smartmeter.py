@@ -45,8 +45,8 @@ class DbusSmartmeterService:
     self._dbusservice.add_path('/ProductName', productname)
     self._dbusservice.add_path('/CustomName', productname)    
     self._dbusservice.add_path('/Latency', None)    
-    self._dbusservice.add_path('/FirmwareVersion', 0.1)
-    self._dbusservice.add_path('/HardwareVersion', 0)
+    self._dbusservice.add_path('/FirmwareVersion', 1.0)
+    self._dbusservice.add_path('/HardwareVersion', 1)
     self._dbusservice.add_path('/Connected', 1)
     self._dbusservice.add_path('/Role', 'grid')
     self._dbusservice.add_path('/Position', 0) # normaly only needed for pvinverter

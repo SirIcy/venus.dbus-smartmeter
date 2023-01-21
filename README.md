@@ -8,15 +8,15 @@ The Python script cyclically reads data from the Tasmota SmartMeter via the Tasm
 
 ### Configuration
 
-In the Python file, you should put the IP of your Fronius device that hosts the REST API. In my setup, it is the IP of the Fronius Symo, which gets the data from the Fronius Smart Metervia the RS485 connection between them.
+In the Python file, you should put the IP of your Tasmota device that hosts the Web API.
 
 ### Installation
 
 1. Copy the files to the /data folder on your venus:
 
-   - /data/dbus-fronius-smartmeter/dbus-smartmeter.py
-   - /data/dbus-fronius-smartmeter/kill_me.sh
-   - /data/dbus-fronius-smartmeter/service/run
+   - /data/dbus-smartmeter/dbus-smartmeter.py
+   - /data/dbus-smartmeter/kill_me.sh
+   - /data/dbus-smartmeter/service/run
 
 2. Set permissions for files:
 

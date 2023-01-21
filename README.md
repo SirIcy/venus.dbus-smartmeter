@@ -12,28 +12,14 @@ In the Python file, you should put the IP of your Tasmota device that hosts the 
 
 ### Installation
 
-1. Copy the files to the /data folder on your venus:
+1. Get zip file:
 
-   - /data/dbus-smartmeter/dbus-smartmeter.py
-   - /data/dbus-smartmeter/kill_me.sh
-   - /data/dbus-smartmeter/service/run
+   - wget https://github.com/SirIcy/venus.dbus-smartmeter/archive/refs/heads/main.zip
 
-2. Set permissions for files:
+2. Run script:
 
-   `chmod 755 /data/dbus-smartmeter/service/run`
+   `sh installrelease.sh`
 
-   `chmod 744 /data/dbus-smartmeter/kill_me.sh`
-
-3. Add a symlink to the file /data/rc.local:
-
-   `ln -s /data/dbus-smartmeter/service /service/dbus-smartmeter`
-
-   Or if that file does not exist yet, store the file rc.local from this service on your Raspberry Pi as /data/rc.local .
-   You can then create the symlink by just running rc.local:
-  
-   `rc.local`
-
-   The daemon-tools should automatically start this service within seconds.
 
 ### Debugging
 
